@@ -39,7 +39,7 @@ class Feedback extends React.Component {
         const options = Object.keys(this.state)
         return (
             <div>
-                {/* <Section title="Please leave feedback"> */}
+                {/* <Section title=""> */}
                     <h2>Please leave feedback</h2>
                     <FeedbackOptions options={options} onLeaveFeedback={this.eventBtn} />
                     <h2>Statistics</h2>
