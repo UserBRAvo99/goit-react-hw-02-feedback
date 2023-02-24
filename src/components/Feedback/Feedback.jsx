@@ -41,8 +41,11 @@ class Feedback extends React.Component {
             <div>
                 {/* <Section title=""> */}
                     <h2>Please leave feedback</h2>
+                
                     <FeedbackOptions options={options} onLeaveFeedback={this.eventBtn} />
+                
                     <h2>Statistics</h2>
+                
                     {total > 0 ? <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positiveFeedback={positiveFeedback} /> : <Notification message="There is no feedback"></Notification> }
                 {/* </Section> */}
             </div>
