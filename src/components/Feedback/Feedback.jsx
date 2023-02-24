@@ -1,38 +1,26 @@
 import React from "react";
 
+
+
+import Statistics from "./Statistics/Statistics";
+import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
+import Notification from "components/Notification/Notification";
+
 import scss from '../Feedback/feedback.module.scss'
 
 class Feedback extends React.Component {
 
-    //  state - властивість екземпляра, не потребує конструктора(в реакті)
     state = {
         good: 0,
         neutral: 0,
         bad: 0
     }
 
- 
-// в event приходить кросс-браузерна обгортка реакта(але на ньому є таргет і всі інші властивості)
-    eventGood = (event) => {
-        // метод setState() - оновлюю потрібне значення state
-        //  аргумент який отримує setState (в данному випадку колбек функцію, яка в свою чергу отримує prevState - тобто попередне значення state.good )
+    eventBtn = (event) => {
+        const { name } = event.target;
         this.setState((prevState) => {
             return {
-                good: prevState.good + 1
-            }
-        })
-    }
-    eventNeutral = (event) => {
-        this.setState((prevState) => {
-            return {
-                neutral: prevState.neutral + 1
-            }
-        })
-    }
-    eventBad = (event) =>  {
-        this.setState((prevState) => {
-            return {
-                bad: prevState.bad + 1
+                [name]: prevState[name] + 1
             }
         })
     }
@@ -48,24 +36,15 @@ class Feedback extends React.Component {
     render() {
         const total = this.countTotalFeedback()
         const positiveFeedback = this.countPositiveFeedbackPercentage()
+        const options = Object.keys(this.state)
         return (
             <div>
-                <h2>Please leave feedback</h2>
-                <div>
-                    <button type="button" onClick={this.eventGood}>Good</button>
-                    <button type="button" onClick={this.eventNeutral}>Neutral</button>
-                    <button type="button" onClick={this.eventBad}>Bad</button>
-                </div>
-                <div>
+                {/* <Section title="Please leave feedback"> */}
+                    <h2>Please leave feedback</h2>
+                    <FeedbackOptions options={options} onLeaveFeedback={this.eventBtn} />
                     <h2>Statistics</h2>
-                <ul>
-                    <li>Good: {this.state.good}</li>
-                    <li>Neutral: {this.state.neutral}</li>
-                    <li>Bad: {this.state.bad}</li>
-                    <li>Total: {total}</li>
-                    <li>Positive feedback: {positiveFeedback}</li>
-                </ul>
-                </div>
+                    {total > 0 ? <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positiveFeedback={positiveFeedback} /> : <Notification message="There is no feedback"></Notification> }
+                {/* </Section> */}
             </div>
             
         )
