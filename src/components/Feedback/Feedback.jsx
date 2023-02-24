@@ -2,9 +2,9 @@ import React from "react";
 
 
 
-import Statistics from "./Statistics/Statistics";
-import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
-import Notification from "components/Notification/Notification";
+import Statistics from "./Statistics";
+import FeedbackOptions from "./FeedbackOptions";
+import Notification from "components/Notification";
 
 import scss from '../Feedback/feedback.module.scss'
 
