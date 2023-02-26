@@ -6,8 +6,8 @@ export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
         display: 'flex',
+        padding: 70,
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,

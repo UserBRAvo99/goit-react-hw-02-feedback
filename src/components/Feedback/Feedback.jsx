@@ -38,16 +38,14 @@ class Feedback extends React.Component {
         const positiveFeedback = this.countPositiveFeedbackPercentage()
         const options = Object.keys(this.state)
         return (
-            <div>
-                {/* <Section title=""> */}
-                    <h2>Please leave feedback</h2>
+            <div className={scss.wrapper}>
+                <h2 className={scss.title}>Please leave feedback</h2>
+                <div className={scss.wrapperBtn}>
+                <FeedbackOptions options={options} onLeaveFeedback={this.eventBtn} />
+                </div>
+                <h2 className={scss.title}>Statistics</h2>
                 
-                    <FeedbackOptions options={options} onLeaveFeedback={this.eventBtn} />
-                
-                    <h2>Statistics</h2>
-                
-                    {total > 0 ? <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positiveFeedback={positiveFeedback} /> : <Notification message="There is no feedback"></Notification> }
-                {/* </Section> */}
+                {total > 0 ? <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positiveFeedback={positiveFeedback} /> : <Notification message="There is no feedback"></Notification> }
             </div>
             
         )

@@ -1,7 +1,8 @@
+import scss from './notification.module.scss'
 
 function Notification({message}) {
     return (
-        <p>{message}</p>
+        <p className={scss.p}>{message}</p>
     )
 }
 export default Notification
